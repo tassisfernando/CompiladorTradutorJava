@@ -1,0 +1,72 @@
+notebook
+computador
+celular
+tablet
+pc
+notebook gamer
+computador gamer
+máquina
+maquina
+pc gamer
+gamer
+kindle
+fone
+mouse
+teclado
+monitor
+ssd
+hd
+disco rígido
+placa
+vídeo
+video
+mãe
+mae
+som
+placa de vídeo
+placa mãe
+placa-mãe
+placa de som
+webcam
+carregador
+office
+adobe
+navegador
+rede
+windows xp
+windows vista
+windows server
+windows 7
+windows 8
+windows 10
+windows 11
+arch
+debian
+fedora
+mint
+ubuntu
+ligar
+desligar
+queimar
+reiniciar
+atualizar
+trocar
+sincronizar
+conectar
+quebrar
+abrir
+fechar
+executar
+compartilhar
+integrar
+instalar
+desinstalar
+quanto
+comprar
+reembolsar
+corrigir
+consertar
+conseguir
+custar
+atualizar
+morar

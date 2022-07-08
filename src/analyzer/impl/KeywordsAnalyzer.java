@@ -1,11 +1,13 @@
 package analyzer.impl;
 
 import analyzer.Analyzer;
+import enums.*;
 import utils.Utils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class KeywordsAnalyzer implements Analyzer {
 
@@ -13,19 +15,29 @@ public class KeywordsAnalyzer implements Analyzer {
     private Map<String, String> hashKeywords;
     private LexemeAnalyzer lexemeAnalyzer;
 
+    private List<ActionEnum> actions;
+    private List<DeviceEnum> devices;
+    private List<ProblemEnum> problems;
+    private List<EquipmentEnum> equipments;
+    private List<SoftwareEnum> softwares;
+
     public KeywordsAnalyzer() throws FileNotFoundException {
         init();
         buildHash();
     }
 
     private void init() throws FileNotFoundException {
-        File f = new File("keywords_ptbr.txt");
-        Scanner s = new Scanner(f);
-        StringBuilder stopWordsString = new StringBuilder(" ");
-        while (s.hasNext()) {
-            stopWordsString.append(s.nextLine().toLowerCase()).append("\n");
+        List<KeywordsEnum> temp = Arrays.stream(KeywordsEnum.values()).collect(Collectors.toCollection(LinkedList::new));
+        keywords = new LinkedList<>();
+        for (KeywordsEnum key: temp) {
+            keywords.add(key.name());
         }
-        this.keywords = Utils.getStringList(stopWordsString.toString(), "\n");
+        actions = Arrays.stream(ActionEnum.values()).collect(Collectors.toCollection(LinkedList::new));
+        devices = Arrays.stream(DeviceEnum.values()).collect(Collectors.toCollection(LinkedList::new));
+        problems = Arrays.stream(ProblemEnum.values()).collect(Collectors.toCollection(LinkedList::new));
+        equipments = Arrays.stream(EquipmentEnum.values()).collect(Collectors.toCollection(LinkedList::new));
+        softwares = Arrays.stream(SoftwareEnum.values()).collect(Collectors.toCollection(LinkedList::new));
+
         lexemeAnalyzer = new LexemeAnalyzer();
         keywordsLexemes = new ArrayList<>();
         hashKeywords = new HashMap<>();
@@ -54,5 +66,10 @@ public class KeywordsAnalyzer implements Analyzer {
         }
 
         return symbolList;
+    }
+
+    @Override
+    public String analyzeWord(String word) {
+        return this.keywords.contains(word) || this.keywordsLexemes.contains(word) ? word : null;
     }
 }
