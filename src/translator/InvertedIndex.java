@@ -40,10 +40,12 @@ public class InvertedIndex {
 
             for (String word : words) {
                 if (stopWordsAnalyzer.analyzeWord(word) == null) {
-                    if (keywordsAnalyzer.analyzeWord(word) != null && stopWordsAnalyzer.analyzeWord(word) == null) {
+                    if (keywordsAnalyzer.analyzeWord(word) != null
+                            && stopWordsAnalyzer.analyzeWord(word) == null) {
                         tokenAnalyzer.analyzeWord(lexemeAnalyzer.analyzeWord(keywordsAnalyzer.analyzeWord(word)));
                     } else if (symbolTable.analyzeWord(lexemeAnalyzer.analyzeWord(word)) == null
-                            && symbolTable.analyzeWord(word) == null && stopWordsAnalyzer.analyzeWord(word) == null) {
+                            && symbolTable.analyzeWord(word) == null
+                            && stopWordsAnalyzer.analyzeWord(word) == null) {
                         tokenAnalyzer.analyzeWord(lexemeAnalyzer.analyzeWord(word));
                     }
 
