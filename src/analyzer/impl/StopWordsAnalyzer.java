@@ -18,7 +18,7 @@ public class StopWordsAnalyzer implements Analyzer {
     }
 
     private void init() throws FileNotFoundException {
-        File f = new File("stopwords_ptbr_v2.txt");
+        File f = new File("src/files/stopwords_ptbr_v2.txt");
         Scanner s = new Scanner(f);
         StringBuilder stopWordsString = new StringBuilder(" ");
         while (s.hasNext()) {
@@ -38,5 +38,10 @@ public class StopWordsAnalyzer implements Analyzer {
         words.removeAll(toRemoveList);
 
         return words;
+    }
+
+    @Override
+    public String analyzeWord(String word) {
+        return this.stopWords.contains(word) ? word : null;
     }
 }

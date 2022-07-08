@@ -20,6 +20,11 @@ public class LexemeAnalyzer implements Analyzer {
         return words.stream().map(this::validLexeme).collect(Collectors.toList());
     }
 
+    @Override
+    public String analyzeWord(String word) {
+        return validLexeme(word);
+    }
+
     public String validLexeme(String word) {
         stemmer.setCurrent(word);
         return stemmer.stem() ? stemmer.getCurrent() : word;
